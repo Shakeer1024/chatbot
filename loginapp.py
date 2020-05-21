@@ -11,11 +11,11 @@ app =Flask(__name__)
 
 # Configure db
 #db = yaml.load(open('db.yaml'))
-app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
 app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'loginapp'
+app.config['MYSQL_USER'] = 'b81ff3091705f9'
+app.config['MYSQL_PASSWORD'] = 'd3f20e8c'
+app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2'
 
 mysql = MySQL(app)
 
