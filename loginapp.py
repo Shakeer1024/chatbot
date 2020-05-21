@@ -33,17 +33,19 @@ def register():
 		Password=request.form.get("password")
 		confirm=request.form.get("confirm password")
 
-		if Password == confirm:
-			cur = mysql.connection.cursor()
-			cur.execute("INSERT INTO users(Name,UserName,Password) VALUES(%s,%s,%s)",
-			                                  (Name,UserName,Password))
-			mysql.connection.commit()
-			flash("Registered Successfully and you can login now",'success')
-			return redirect(url_for('index'))
+		if userdata is None:
+			if Password == confirm:
+				cur = mysql.connection.cursor()
+				cur.execute("INSERT INTO users(Name,UserName,Password) VALUES(%s,%s,%s)",(Name,UserName,Password))
+				mysql.connection.commit()
+				flash("Registered Successfully and you can login now",'success')
+				return redirect(url_for('index'))
+			else:
+				flash("Password is incorrect",'error')
+				return render_template('register.html')
 		else:
-			flash("Password is incorrect",'error')
+			flash('username already exist! please user different user name','error')
 			return render_template('register.html')
-
 	return render_template('register.html')
 
 @app.route('/login',methods=['GET','POST'])
