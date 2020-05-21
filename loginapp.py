@@ -8,7 +8,7 @@ from flask_mysqldb import MySQL
 #import yaml
 
 app =Flask(__name__)
-
+sess = Session()
 # Configure db
 #db = yaml.load(open('db.yaml'))
 app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
@@ -72,5 +72,6 @@ def login():
 	return render_template('loginhome.html')
 if __name__ == '__main__':
 	app.secret_key="1234567projectwebcoding"
+	sess.init_app(app)
 	app.run(debug=True)
 
