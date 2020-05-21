@@ -32,7 +32,9 @@ def register():
 		UserName=request.form.get("username")
 		Password=request.form.get("password")
 		confirm=request.form.get("confirm password")
-
+                cur = mysql.connection.cursor()
+		cur.execute("SELECT UserName FROM users WHERE UserName='"+ UserName +"'")
+		userdata=cur.fetchone()
 		if userdata is None:
 			if Password == confirm:
 				cur = mysql.connection.cursor()
