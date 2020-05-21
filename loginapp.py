@@ -15,6 +15,7 @@ app.config['MYSQL_PORT'] = 3306
 app.config['MYSQL_USER'] = 'b81ff3091705f9'
 app.config['MYSQL_PASSWORD'] = 'd3f20e8c'
 app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2'
+app.config['SECRET_KEY'] = '"b'\x8e\x88}\xd9hC\\6z:,$'"'
 
 mysql = MySQL(app)
 
