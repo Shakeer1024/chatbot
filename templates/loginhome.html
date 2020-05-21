@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style>
+      .alert-error {
+        padding: 8px;
+        background-color: lightcoral;
+        color: white;
+      }
+
+      .alert-success {
+        padding: 8px;
+        background-color: lightgreen;
+        color: white;
+      }
+
+    </style>
+</head>
+<body>
+	{% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert-{{category}}"> {{ message }}</div>
+    {% endfor %}
+	<h4>Welcome to the login home page</h4>
+</body>
+</html>
