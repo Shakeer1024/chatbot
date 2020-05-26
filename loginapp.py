@@ -6,7 +6,7 @@ from flask_mysqldb import MySQL
 #from sqlalchemy.orm import scoped_session,sessionmaker
 
 #from flaskext.mysql import MySQL
-#import yaml
+import yaml
 
 app =Flask(__name__)
 
@@ -19,13 +19,21 @@ app =Flask(__name__)
 #app.config['MYSQL_DB'] = 'loginapp'
 #app.config['MYSQL_CURSORCLASS']='DictCursor'
 
-app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
-app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'b81ff3091705f9'
-app.config['MYSQL_PASSWORD'] = 'd3f20e8c'
-app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2'
-app.config['MYSQL_CURSORCLASS']='DictCursor'
-app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'"
+app.config['MYSQL_HOST'] = db['mysql_host']
+app.config['MYSQL_PORT'] =db['mysql_port']
+app.config['MYSQL_USER'] = db['mysql_user']
+app.config['MYSQL_PASSWORD'] = db['mysql_password']
+app.config['MYSQL_DB'] = db['mysql_db']
+app.config['MYSQL_CURSORCLASS'] =db['mysql_cursorclass']
+app.config['SECRET_KEY'] =db['secret_key']
+
+#app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+#app.config['MYSQL_PORT'] = 3306
+#app.config['MYSQL_USER'] = 'b81ff3091705f9'
+#app.config['MYSQL_PASSWORD'] = 'd3f20e8c'
+#app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2'
+#app.config['MYSQL_CURSORCLASS']='DictCursor'
+#app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'"
 
 mysql = MySQL(app)
 
