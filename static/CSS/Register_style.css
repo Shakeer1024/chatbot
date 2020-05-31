@@ -362,6 +362,12 @@ nav a:hover {
   color: #000;
 }
 
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #ffcc00;
+
   position: absolute;
   top: 0;
   width: 0%;
