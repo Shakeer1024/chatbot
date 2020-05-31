@@ -40,8 +40,8 @@
     <div id="webchat"/>
     <script src="https://storage.googleapis.com/mrbot-cdn/webchat-0.5.8.js"></script>
     <script>
-      sessionStorage.clear()
-     WebChat.default.init({
+       sessionStorage.clear()
+       WebChat.default.init({
        selector: "#webchat",
        initPayload: 'user {{ session['user'] }}',
        interval: 1000, // 1000 ms between each message
