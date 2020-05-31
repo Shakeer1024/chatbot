@@ -4,51 +4,40 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{% block title %} {% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <style>
-      .alert-error {
-        padding: 8px;
-        background-color: lightcoral;
-        color: white;
-      }
-
-      .alert-success {
-        padding: 8px;
-        background-color: lightgreen;
-        color: white;
-      }
-      columns.is-centered{justify-content:center}
-
-    </style>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/Register_style.css') }}">
+<style>
+  nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #ffcc00;
+</style>
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">C&C</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+   <header class="bg-col">
+      <div class="container ">
+      <h1 class="logo"></h1>
+      <nav>
+        <ul>
           {% if session['user'] %}
           <li>
-            <a href="/login">Home</a>
+            <a style="color:white" href="/login">Home</a>
           </li>
           <li>
-            <a href="http://35.238.89.248/">Chatbot</a>
+            <a  style="color:white" href="/chatbot">Chatbot</a>
           </li>
           <li>
-            <a href="/logout">Logout</a>
+            <a  style="color:white" href="http://35.223.2.120" target="_blank">Admin</a>
+          </li>
+          <li>
+            <a style="color:white" href="/logout">Logout</a>
           </li>
           {% else %}
           <li>
-            <a href="/">Home</a>
+            <a style="color:white" href="/">Home</a>
           </li>
           {% endif %}
         </ul>
