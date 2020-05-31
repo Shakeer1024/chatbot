@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %} {% endblock %}</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/Register_style.css') }}">
+</head>
+<style>
+  nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #ffcc00;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+</style>
+<body>
+   <header class="bg-col">
+      <div class="container ">
+      <h1 class="logo"></h1>
+      <nav>
+        <ul>
+          {% if session['user'] %}
+          <li>
+            <a style="color:white" href="/login">Home</a>
+          </li>
+          <li>
+            <a  style="color:white" href="/chatbot">Chatbot</a>
+          </li>
+          <li>
+            <a  style="color:white" href="http://35.223.2.120" target="_blank">Admin</a>
+          </li>
+          <li>
+            <a style="color:white" href="/logout">Logout</a>
+          </li>
+          {% else %}
+          <li>
+            <a style="color:white" href="/">Home</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% block content %} {% endblock %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
