@@ -15,11 +15,3 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
-
-mysql_host: 'us-cdbr-east-06.cleardb.net'
-mysql_port: 3306
-mysql_user: 'b81ff3091705f9'
-mysql_password: 'd3f20e8c'
-mysql_db: 'heroku_8178ef1d9ae0bf2'
-mysql_cursorclass: 'DictCursor'
-secret_key: "b'\x8e\x88}\xd9hC\\6z:,$'"
