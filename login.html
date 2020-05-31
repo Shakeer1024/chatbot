@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/Login_style.css') }}">
+</head>
+
+<body>
+  {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert-{{category}}"> {{ message }}</div>
+    {% endfor %}
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://cdn.dribbble.com/users/2356062/screenshots/5588407/logo_design-05_2x.jpg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST" action="/login">
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="UserName" required>
+      <input type="password" id="login" class="fadeIn third" name="password" placeholder="Password" required>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      Not an user? <a class="underlineHover" href="/register">create an account</a>
+    </div>
+
+  </div>
+</div>
+</body>
+
+</html>
