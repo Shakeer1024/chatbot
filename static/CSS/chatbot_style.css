@@ -1,0 +1,52 @@
+.bg-col{
+      background: #ff0084;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #33001b, #ff0084);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #33001b, #ff0084); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+   }
+   .mt-100{
+      margin-top:100px;
+   }
+      .alert-error {
+        padding: 8px;
+        background-color: lightcoral;
+        color: white;
+      }
+
+      .alert-success {
+        padding: 8px;
+        background-color: lightgreen;
+        color: white;
+     }
+
+
+     nav a:hover {
+  color: #000;
+}
+
+
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+ }
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #ffcc00;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
