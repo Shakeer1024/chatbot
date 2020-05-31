@@ -39,33 +39,33 @@
 
     <div id="webchat"/>
     <script src="https://storage.googleapis.com/mrbot-cdn/webchat-0.5.8.js"></script>
-    <script>
-      sessionStorage.clear()
-       WebChat.default.init({
-         selector: "#webchat",
-         initPayload: 'user {{ session['user'] }}',
-         interval: 1000, // 1000 ms between each message
-         customData: {}, // arbitrary custom data. Stay minimal as this will be added to the socket
-         socketUrl: "http://35.223.2.120",
-         socketPath: "/socket.io/",
-         title: "Mood Bot",
-         inputTextFieldHint: "Type a message...",
-         connectingText: "Waiting for server...",
-         hideWhenNotConnected: false,
-         fullScreenMode: false,
-         showFullScreenButton: false,
-         profileAvatar: "https://img.favpng.com/15/23/16/avatar-user-profile-icon-png-favpng-9eTu3uL6iJmKQsvfhU4NmBNAB.jpg",
-         params: {
-         images: {
-           dims: {
-             width: 800,
-             height: 800,
-           }
-         },
-         storage:"session"
-       },
-      
-     })
-   </script>
+  <script>
+    sessionStorage.clear()
+    WebChat.default.init({
+      selector:"#webchat",
+      initPayload:"user {{ session['user'] }}",
+      interval: 1000, //1000ms between each message
+      customData: {}, // arbitrary custom data. Stay minimal as this will be added to the socket
+      socketUrl: "http://35.223.2.120",
+      socketPath: "/socket.io/",
+      title: "Mood Bot",
+      inputTextFieldHint: "Type a message....",
+      connectingText: "Waiting for server...",
+      hideWhenNotConnected: false,
+      fullScreenMode: false,
+      showFullScreenButton: false,
+      profileAvatar: "https://img.favpng.com/15/23/16/avatar-user-profile-icon-png-favpng-9eTu3uL6iJmKQsvfhU4NmBNAB.jpg",
+      params: {
+        images: {
+          dims: {
+            width: 800,
+            height: 800,
+          }
+        },
+        storage:"session"
+      },
+    })
+  </script>
+  </script>
 </body>
 </html>
