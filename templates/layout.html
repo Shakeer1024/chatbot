@@ -9,6 +9,21 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/Register_style.css') }}">
 </head>
+  <style>
+  nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #ffcc00;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+  </style>
 <body>
    <header class="bg-col">
       <div class="container ">
