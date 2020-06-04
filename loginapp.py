@@ -2,31 +2,11 @@ import flask
 from flask import Flask,session,request,render_template,redirect,url_for,flash
 from flask_mysqldb import MySQL
 
-#from sqlalchemy import create_engine
-#from sqlalchemy.orm import scoped_session,sessionmaker
 
-#from flaskext.mysql import MySQL
-#import yaml
+
 
 app =Flask(__name__)
 
-# Configure db
-#db = yaml.load(open('db.yaml'))
-#app.config['MYSQL_HOST'] = '127.0.0.1'
-#app.config['MYSQL_PORT'] = 3306
-#app.config['MYSQL_USER'] = 'root'
-#app.config['MYSQL_PASSWORD'] = 'root'
-#app.config['MYSQL_DB'] = 'loginapp'
-#app.config['MYSQL_CURSORCLASS']='DictCursor'
-#app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'"
-
-#app.config['MYSQL_HOST'] = db['mysql_host']
-#app.config['MYSQL_PORT'] =db['mysql_port']
-#app.config['MYSQL_USER'] = db['mysql_user']
-#app.config['MYSQL_PASSWORD'] = db['mysql_password']
-#app.config['MYSQL_DB'] = db['mysql_db']
-#app.config['MYSQL_CURSORCLASS'] =db['mysql_cursorclass']
-#app.config['SECRET_KEY'] =db['secret_key']
 
 app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
 app.config['MYSQL_PORT'] = 3306
@@ -68,7 +48,7 @@ def register():
 				flash("Registered Successfully and you can login now",'success')
 				return redirect(url_for('index'))
 			else:
-				flash("Password is incorrect",'error')
+				flash("Password does not match",'error')
 				return render_template('register.html')
 		else:
 			flash('username already exist! please user different user name','error')
