@@ -3,8 +3,6 @@ from flask import Flask,session,request,render_template,redirect,url_for,flash
 from flask_mysqldb import MySQL
 
 
-
-
 app =Flask(__name__)
 
 
