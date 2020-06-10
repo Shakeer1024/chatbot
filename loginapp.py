@@ -4,11 +4,11 @@ from flask_mysqldb import MySQL
 
 app =Flask(__name__)
 
-app.config['MYSQL_HOST'] = '127.0.0.1' #Please use your host name
+app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net' #Please use your host name
 app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'root' #Please use your user name
-app.config['MYSQL_PASSWORD'] = 'root' #Please use your password
-app.config['MYSQL_DB'] = 'loginapp' #Please use your database name that is created.
+app.config['MYSQL_USER'] = 'b81ff3091705f9' #Please use your user name
+app.config['MYSQL_PASSWORD'] = 'd3f20e8c' #Please use your password
+app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2' #Please use your database name that is created.
 app.config['MYSQL_CURSORCLASS']='DictCursor'
 app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'" #You can set your own secret key
 
@@ -36,6 +36,8 @@ def register():
 				cur.execute("INSERT INTO users(Name,UserName,Password) VALUES(%s,%s,%s)",(Name,UserName,Password))
 				mysql.connection.commit()
 
+				session['name']=Name
+
 				flash("Registered Successfully and you can login now",'success')
 				return redirect(url_for('index'))
 			else:
@@ -60,6 +62,7 @@ def login():
 		userdata=cur.fetchone()
 		cur.execute("SELECT Password FROM users WHERE UserName='"+ UserName +"'")
 		pwddata=cur.fetchone()
+		session['user']=UserName
 
 		if userdata is None:
 			flash("No such user found, Please register",'error')
@@ -67,7 +70,6 @@ def login():
 		else:
 			if Password==pwddata['Password']:
 				flash("Loggedin Successfully", 'success')
-				session['user']=UserName
 				return redirect(url_for('login'))
 			else:
 				flash("Incorrect username or password",'error')
