@@ -2,21 +2,18 @@ import flask
 from flask import Flask,session,request,render_template,redirect,url_for,flash
 from flask_mysqldb import MySQL
 
-
 app =Flask(__name__)
 
-
-app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'
+app.config['MYSQL_HOST'] = '127.0.0.1' #Please use your host name
 app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_USER'] = 'b81ff3091705f9'
-app.config['MYSQL_PASSWORD'] = 'd3f20e8c'
-app.config['MYSQL_DB'] = 'heroku_8178ef1d9ae0bf2'
+app.config['MYSQL_USER'] = 'root' #Please use your user name
+app.config['MYSQL_PASSWORD'] = 'root' #Please use your password
+app.config['MYSQL_DB'] = 'loginapp' #Please use your database name that is created.
 app.config['MYSQL_CURSORCLASS']='DictCursor'
-app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'"
+app.config['SECRET_KEY'] = "b'\x8e\x88}\xd9hC\\6z:,$'" #You can set your own secret key
+
 
 mysql = MySQL(app)
-
-
 
 @app.route('/')
 def index():
@@ -33,15 +30,11 @@ def register():
 		cur.execute("SELECT UserName FROM users WHERE UserName='"+ UserName +"'")
 		userdata=cur.fetchone()
 
-		
-
 		if userdata is None:
 			if Password == confirm:
 				cur = mysql.connection.cursor()
 				cur.execute("INSERT INTO users(Name,UserName,Password) VALUES(%s,%s,%s)",(Name,UserName,Password))
 				mysql.connection.commit()
-
-				session['name']=Name
 
 				flash("Registered Successfully and you can login now",'success')
 				return redirect(url_for('index'))
@@ -53,6 +46,7 @@ def register():
 			return render_template('register.html')
 
 	return render_template('register.html')
+
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -66,7 +60,6 @@ def login():
 		userdata=cur.fetchone()
 		cur.execute("SELECT Password FROM users WHERE UserName='"+ UserName +"'")
 		pwddata=cur.fetchone()
-		session['user']=UserName
 
 		if userdata is None:
 			flash("No such user found, Please register",'error')
@@ -74,12 +67,14 @@ def login():
 		else:
 			if Password==pwddata['Password']:
 				flash("Loggedin Successfully", 'success')
+				session['user']=UserName
 				return redirect(url_for('login'))
 			else:
 				flash("Incorrect username or password",'error')
 				return redirect(url_for('index'))
 
 	return render_template('loginhome.html')
+
 
 @app.route('/chatbot')
 def chatbot():
