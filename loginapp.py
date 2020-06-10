@@ -36,8 +36,6 @@ def register():
 				cur.execute("INSERT INTO users(Name,UserName,Password) VALUES(%s,%s,%s)",(Name,UserName,Password))
 				mysql.connection.commit()
 
-				session['name']=Name
-
 				flash("Registered Successfully and you can login now",'success')
 				return redirect(url_for('index'))
 			else:
@@ -62,7 +60,6 @@ def login():
 		userdata=cur.fetchone()
 		cur.execute("SELECT Password FROM users WHERE UserName='"+ UserName +"'")
 		pwddata=cur.fetchone()
-		session['user']=UserName
 
 		if userdata is None:
 			flash("No such user found, Please register",'error')
@@ -70,6 +67,7 @@ def login():
 		else:
 			if Password==pwddata['Password']:
 				flash("Loggedin Successfully", 'success')
+				session['user']=UserName
 				return redirect(url_for('login'))
 			else:
 				flash("Incorrect username or password",'error')
